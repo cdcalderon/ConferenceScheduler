@@ -1,11 +1,11 @@
 import {Sequelize} from "sequelize";
-import * as ORM from "sequelize";
+import * as ORM from "Sequelize";
+import {sequelize} from "../db/sequelizeDb";
 
-
-export function Courses(sequelize: Sequelize) {
+function CreateCourse(sequelize: Sequelize) {
     return sequelize.define('Course', {
         description: ORM.STRING,
-        url:  ORM.STRING,
+        url: ORM.STRING,
         longDescription: ORM.TEXT,
         iconUrl: ORM.STRING,
         courseListIcon: ORM.STRING,
@@ -15,4 +15,7 @@ export function Courses(sequelize: Sequelize) {
         isOngoing: ORM.BOOLEAN
     })
 }
+
+export const Course = CreateCourse(sequelize);
+
 
