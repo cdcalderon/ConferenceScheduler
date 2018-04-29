@@ -1,6 +1,17 @@
-import {Course} from "./model/Course";
+import {Inject} from "typescript-ioc";
+import {CourseService} from "./service/CourseService";
 
-const courses$ = Course.findAll();
+class CourseController {
+    @Inject courseService: CourseService;
 
-courses$
-    .then(r => console.log(JSON.stringify(r)));
+    allCourses() {
+        return this.courseService.allCourses();
+    }
+}
+
+let courseController: CourseController = new CourseController();
+
+courseController.allCourses()
+    .then(r => {
+        console.log(JSON.stringify(r))
+    });
