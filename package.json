@@ -1,0 +1,27 @@
+{
+  "name": "carlosApi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "es6": "./node_modules/.bin/http-server -c-1 .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./node_modules/.bin/ts-node ./server/server.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/lodash": "^4.14.108",
+    "@types/node": "^9.6.7",
+    "@types/sequelize": "^4.27.16",
+    "http-server": "^0.11.1",
+    "ts-node": "^6.0.1",
+    "typescript": "^2.8.3"
+  },
+  "dependencies": {
+    "lodash": "^4.17.10",
+    "pg": "^7.4.1",
+    "sequelize": "^4.37.6"
+  }
+}
