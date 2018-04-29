@@ -22,6 +22,7 @@
   "dependencies": {
     "lodash": "^4.17.10",
     "pg": "^7.4.1",
-    "sequelize": "^4.37.6"
+    "sequelize": "^4.37.6",
+    "typescript-ioc": "^1.2.3"
   }
 }
