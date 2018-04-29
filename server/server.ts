@@ -1,21 +1,14 @@
 import * as ORM from "Sequelize";
+import {Courses} from "./model/Course";
+import {LoggingOptions} from "sequelize";
 
 const dbUrl = 'postgres://postgres:postgres@localhost:5432/complete-typescript-course';
 
-const sequelize = new ORM(dbUrl);
+const options: LoggingOptions = {benchmark: true, logging: console.log};
 
-const CourseModel = sequelize.define('Course', {
-    description: ORM.STRING,
-    url:  ORM.STRING,
-    longDescription: ORM.TEXT,
-    iconUrl: ORM.STRING,
-    courseListIcon: ORM.STRING,
-    seqNo: ORM.INTEGER,
-    comingSoon: ORM.BOOLEAN,
-    isNew: ORM.BOOLEAN,
-    isOngoing: ORM.BOOLEAN
-});
+const sequelize = new ORM(dbUrl, options);
 
-CourseModel.findAll().then(console.log);
+const CourseModel = Courses(sequelize);
 
-console.log('carlos... Server is running.......');
+CourseModel.findAll()
+    .then(r => console.log(JSON.stringify(r)));
