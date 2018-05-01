@@ -1,17 +1,26 @@
-import {Inject} from "typescript-ioc";
-import {CourseService} from "./service/CourseService";
+import * as express from 'express';
+import {Application} from "express";
+import {CourseController} from "./controllers/courseController";
 
-class CourseController {
-    @Inject courseService: CourseService;
+const app: Application = express();
 
-    allCourses() {
-        return this.courseService.allCourses();
-    }
-}
+app.route('/api/courses').get((req, res) => {
+    let courseController: CourseController = new CourseController();
 
-let courseController: CourseController = new CourseController();
+    courseController.allCourses()
+        .then(courses => {
+            res.status(200).json({courses});
+        });
 
-courseController.allCourses()
-    .then(r => {
-        console.log(JSON.stringify(r))
-    });
+
+});
+
+app.listen(8090, () => {
+    console.log('Server is running............');
+});
+
+
+
+
+
+
